@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Tasks - Time Management and Task Prioritization System
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            ⏱
+            <span>Time Management</span>
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="tasks.html"
+               class="active">
+                📋 My Tasks
+            </a>
+
+            <a href="add-task.html">
+                ➕ Add Task
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="dashboard">
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    My Tasks
+                </h1>
+
+                <p>
+                    Manage, prioritize and track your tasks.
+                </p>
+
+            </div>
+
+
+            <div class="user-info">
+
+                👤
+                <span id="tasksUserName">
+                    User
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TASK HEADER -->
+
+        <section class="tasks-header-section">
+
+            <div>
+
+                <h2>
+                    Task List
+                </h2>
+
+                <p id="taskCount">
+                    0 tasks
+                </p>
+
+            </div>
+
+
+            <a
+                href="add-task.html"
+                class="add-task-button">
+
+                ➕ Add New Task
+
+            </a>
+
+        </section>
+
+
+
+        <!-- FILTER BOX -->
+
+        <section class="filter-section">
+
+            <div class="filter-title">
+
+                <h3>
+                    🔎 Filter Tasks
+                </h3>
+
+            </div>
+
+
+            <div class="filter-grid">
+
+
+                <div class="filter-group">
+
+                    <label for="searchTask">
+                        Search Task
+                    </label>
+
+                    <input
+                        type="text"
+                        id="searchTask"
+                        placeholder="Search by task name...">
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="priorityFilter">
+                        Priority
+                    </label>
+
+                    <select id="priorityFilter">
+
+                        <option value="ALL">
+                            All Priorities
+                        </option>
+
+                        <option value="Critical">
+                            Critical
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="statusFilter">
+                        Status
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="ALL">
+                            All Status
+                        </option>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="categoryFilter">
+                        Category
+                    </label>
+
+                    <select id="categoryFilter">
+
+                        <option value="ALL">
+                            All Categories
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="clearFilters"
+                    class="clear-filter-button">
+
+                    Clear Filters
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TASK TABLE -->
+
+        <section class="tasks-table-section">
+
+            <div class="task-table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Task
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Priority
+                            </th>
+
+                            <th>
+                                Deadline
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Time Tracking
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="taskList">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="empty-task-message">
+
+                                No tasks found.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="js/tasks.js"></script>
+
+</body>
+
+</html>

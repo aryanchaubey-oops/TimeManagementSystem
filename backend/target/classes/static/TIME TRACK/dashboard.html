@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dashboard - Time Management and Task Prioritization System
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            ⏱
+
+            <span>
+                Time Management
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html"
+               class="active">
+
+                🏠 Dashboard
+
+            </a>
+
+
+            <a href="tasks.html">
+
+                📋 My Tasks
+
+            </a>
+
+
+            <a href="add-task.html">
+
+                ➕ Add Task
+
+            </a>
+
+
+            <a href="profile.html">
+
+                👤 Profile
+
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="dashboard">
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Manage your tasks and track your progress.
+                </p>
+
+            </div>
+
+
+            <div class="user-info">
+
+                👤
+
+                <span id="dashboardUserName">
+                    User
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="summary-cards">
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <h3 id="totalTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Total Tasks
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <h3 id="pendingTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Pending Tasks
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <h3 id="completedTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Completed Tasks
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    ⏱️
+                </div>
+
+                <div>
+
+                    <h3 id="totalTime">
+                        00:00:00
+                    </h3>
+
+                    <p>
+                        Time Spent
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CATEGORY SUMMARY -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <h2>
+                    📂 Category Summary
+                </h2>
+
+            </div>
+
+
+            <div
+                class="progress-summary"
+                id="categorySummary">
+
+                <div class="progress-box">
+
+                    <h3>
+                        0
+                    </h3>
+
+                    <p>
+                        No Categories
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROGRESS SUMMARY -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <h2>
+                    📊 Progress Summary
+                </h2>
+
+            </div>
+
+
+            <div class="progress-summary">
+
+
+                <div class="progress-box">
+
+                    <h3 id="completionPercentage">
+                        0%
+                    </h3>
+
+                    <p>
+                        Completion
+                    </p>
+
+                </div>
+
+
+                <div class="progress-box">
+
+                    <h3 id="criticalTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Critical
+                    </p>
+
+                </div>
+
+
+                <div class="progress-box">
+
+                    <h3 id="highTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        High
+                    </p>
+
+                </div>
+
+
+                <div class="progress-box">
+
+                    <h3 id="mediumTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Medium
+                    </p>
+
+                </div>
+
+
+                <div class="progress-box">
+
+                    <h3 id="lowTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        Low
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECENT TASKS -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <h2>
+                    📝 Recent Tasks
+                </h2>
+
+                <a href="tasks.html">
+                    View All
+                </a>
+
+            </div>
+
+
+            <div class="task-table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Task
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Priority
+                            </th>
+
+                            <th>
+                                Deadline
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentTasks">
+
+                        <tr>
+
+                            <td colspan="5">
+                                No recent tasks.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

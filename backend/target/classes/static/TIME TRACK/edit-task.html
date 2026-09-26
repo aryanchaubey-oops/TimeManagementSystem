@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Edit Task - Time Management and Task Prioritization System
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            ⏱
+
+            <span>
+                Time Management
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="tasks.html"
+               class="active">
+                📋 My Tasks
+            </a>
+
+            <a href="add-task.html">
+                ➕ Add Task
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </aside>
+
+
+    <main class="dashboard">
+
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Edit Task
+                </h1>
+
+                <p>
+                    Update your task details and priority.
+                </p>
+
+            </div>
+
+
+            <div class="user-info">
+
+                👤
+
+                <span id="editTaskUserName">
+                    User
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <section class="form-section">
+
+
+            <div class="form-section-header">
+
+                <h2>
+                    Task Information
+                </h2>
+
+                <p>
+                    Modify the details of your task.
+                </p>
+
+            </div>
+
+
+
+            <form id="editTaskForm">
+
+
+                <div class="form-group">
+
+                    <label for="editTaskName">
+                        Task Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editTaskName"
+                        placeholder="Enter task name"
+                        required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="editDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="editDescription"
+                        rows="4"
+                        placeholder="Enter task description"></textarea>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="editCategory">
+                        Task Category
+                    </label>
+
+                    <select
+                        id="editCategory"
+                        required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="editDeadline">
+                            Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="editDeadline"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="editImportance">
+                            Importance Level
+                        </label>
+
+                        <select
+                            id="editImportance"
+                            required>
+
+                            <option value="Critical">
+                                Critical
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="editStatus">
+                        Task Status
+                    </label>
+
+                    <select
+                        id="editStatus"
+                        required>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-actions">
+
+                    <a
+                        href="tasks.html"
+                        class="cancel-button">
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="save-task-button">
+
+                        💾 Save Changes
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="js/tasks.js"></script>
+
+
+    <script>
+
+        const editTaskUserName =
+            document.getElementById(
+                "editTaskUserName"
+            );
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "currentUser"
+                )
+            );
+
+        if (
+            currentUser &&
+            editTaskUserName
+        ) {
+
+            editTaskUserName.textContent =
+                currentUser.name;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

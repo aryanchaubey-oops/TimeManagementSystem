@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Profile - Time Management and Task Prioritization System
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            ⏱
+            <span>Time Management</span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="tasks.html">
+                📋 My Tasks
+            </a>
+
+            <a href="add-task.html">
+                ➕ Add Task
+            </a>
+
+            <a href="profile.html"
+               class="active">
+                👤 Profile
+            </a>
+
+        </nav>
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard profile-page">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="profile-page-header">
+
+            <div>
+
+                <span class="profile-page-label">
+                    ACCOUNT
+                </span>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Manage your personal information and view your activity.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE HERO -->
+
+        <section class="profile-hero">
+
+            <div class="profile-avatar-large">
+                👤
+            </div>
+
+            <div class="profile-hero-info">
+
+                <h2 id="profileName">
+                    User
+                </h2>
+
+                <p id="profileEmail">
+                    user@example.com
+                </p>
+
+                <span
+                    class="profile-role"
+                    id="profileRole">
+
+                    USER
+
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCOUNT DETAILS -->
+
+        <section class="profile-content-card">
+
+            <div class="profile-card-heading">
+
+                <div>
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                    <p>
+                        Your registered account details
+                    </p>
+
+                </div>
+
+                <span class="profile-card-icon">
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-details">
+
+                <div class="profile-detail">
+
+                    <span>
+                        Full Name
+                    </span>
+
+                    <strong id="infoName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-detail">
+
+                    <span>
+                        Email Address
+                    </span>
+
+                    <strong id="infoEmail">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-detail">
+
+                    <span>
+                        Account Type
+                    </span>
+
+                    <strong id="infoRole">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-detail">
+
+                    <span>
+                        Account Status
+                    </span>
+
+                    <strong class="active-status">
+                        ● Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTIVITY -->
+
+        <section class="profile-content-card">
+
+            <div class="profile-card-heading">
+
+                <div>
+
+                    <h2>
+                        Task Activity
+                    </h2>
+
+                    <p>
+                        Overview of your task management activity
+                    </p>
+
+                </div>
+
+                <span class="profile-card-icon">
+                    📊
+                </span>
+
+            </div>
+
+
+            <div class="profile-stat-grid">
+
+
+                <div class="profile-stat">
+
+                    <div class="profile-stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <strong id="profileTotalTasks">
+                            0
+                        </strong>
+
+                        <span>
+                            Total Tasks
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div class="profile-stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <strong id="profileCompletedTasks">
+                            0
+                        </strong>
+
+                        <span>
+                            Completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div class="profile-stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <strong id="profilePendingTasks">
+                            0
+                        </strong>
+
+                        <span>
+                            Pending
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div class="profile-stat-icon">
+                        ⏱️
+                    </div>
+
+                    <div>
+
+                        <strong id="profileTotalTime">
+                            00:00:00
+                        </strong>
+
+                        <span>
+                            Time Spent
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTIONS -->
+
+        <div class="profile-bottom-actions">
+
+            <a
+                href="dashboard.html"
+                class="profile-back-button">
+
+                ← Dashboard
+
+            </a>
+
+
+            <button
+                class="profile-logout-button"
+                onclick="logout()">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>

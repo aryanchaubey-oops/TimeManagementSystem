@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Admin Dashboard - Time Management and Task Prioritization System
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <!-- ========================================
+         ADMIN SIDEBAR
+    ======================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            ⏱
+
+            <span>
+                Time Management
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#top"
+               class="active">
+
+                🏠 Admin Dashboard
+
+            </a>
+
+            <a href="#performance">
+
+                📊 Performance
+
+            </a>
+
+            <a href="#priorityRules">
+
+                ⚙️ Priority Rules
+
+            </a>
+
+            <a href="#categories">
+
+                📂 Task Categories
+
+            </a>
+
+            <a href="#userManagement">
+
+                👥 User Management
+
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main
+        class="dashboard admin-page"
+        id="top">
+
+
+        <!-- ========================================
+             HEADER
+        ======================================== -->
+
+        <header class="admin-page-header">
+
+            <div>
+
+                <span class="admin-label">
+                    ADMIN PANEL
+                </span>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Configure system settings and monitor task management activity.
+                </p>
+
+            </div>
+
+
+            <div class="admin-user-badge">
+
+                <span class="admin-shield">
+                    🛡️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        System Control
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ========================================
+             PERFORMANCE
+        ======================================== -->
+
+        <section
+            id="performance"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <h2>
+                        System Performance
+                    </h2>
+
+                    <p>
+                        Overview of users and task activity.
+                    </p>
+
+                </div>
+
+                <span class="section-icon">
+                    📊
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-grid">
+
+
+                <!-- USERS -->
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Users
+                        </span>
+
+                        <strong id="totalUsers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TASKS -->
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Tasks
+                        </span>
+
+                        <strong id="totalTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED -->
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Completed Tasks
+                        </span>
+
+                        <strong id="completedTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDING -->
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pending Tasks
+                        </span>
+
+                        <strong id="pendingTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             PRIORITY RULES
+        ======================================== -->
+
+        <section
+            id="priorityRules"
+            class="admin-content-card">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <h2>
+                        ⚙️ Priority Rules
+                    </h2>
+
+                    <p>
+                        Configure when task importance should increase based on deadlines.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="priorityRuleForm"
+                class="admin-form">
+
+
+                <div class="admin-form-group">
+
+                    <label for="ruleImportance">
+                        Importance Level
+                    </label>
+
+                    <select
+                        id="ruleImportance"
+                        required>
+
+                        <option value="">
+                            Select importance
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="admin-form-group">
+
+                    <label for="ruleDays">
+                        Deadline Days
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ruleDays"
+                        min="1"
+                        placeholder="Example: 3"
+                        required>
+
+                </div>
+
+
+                <div class="admin-form-action">
+
+                    <button
+                        type="submit"
+                        class="admin-primary-button">
+
+                        ⚙️ Save Rule
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ========================================
+             CATEGORIES
+        ======================================== -->
+
+        <section
+            id="categories"
+            class="admin-content-card">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <h2>
+                        📂 Task Categories
+                    </h2>
+
+                    <p>
+                        Create and manage categories used by users for their tasks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="categoryForm"
+                class="admin-form">
+
+
+                <div class="admin-form-group category-input">
+
+                    <label for="categoryName">
+                        Category Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoryName"
+                        placeholder="Example: College"
+                        required>
+
+                </div>
+
+
+                <div class="admin-form-action">
+
+                    <button
+                        type="submit"
+                        class="admin-primary-button">
+
+                        ➕ Add Category
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+
+            <div class="admin-table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="categoryList">
+
+                        <tr>
+
+                            <td colspan="2">
+                                No categories added yet.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             USER MANAGEMENT
+        ======================================== -->
+
+        <section
+            id="userManagement"
+            class="admin-content-card">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <h2>
+                        👥 User Management
+                    </h2>
+
+                    <p>
+                        View registered users and manage their accounts.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Account Type
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="userList">
+
+                        <tr>
+
+                            <td colspan="4">
+                                No users available.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="js/admin-dashboard.js"></script>
+
+</body>
+
+</html>
