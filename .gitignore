@@ -1,0 +1,9 @@
+/backend/target/
+*.class
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
