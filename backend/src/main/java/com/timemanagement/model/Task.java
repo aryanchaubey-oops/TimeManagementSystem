@@ -1,36 +1,36 @@
-package com.timemanagement.model;
+﻿package com.timemanagement.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Task entity extending BaseEntity with priority and user tracking fields.
+ */
 @Entity
 @Table(name = "tasks")
-public class Task {
+public class Task extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Column(nullable = false)
     private String name;
+
     private String description;
     private String deadline;
     private int importance;
     private String category;
     private String status = "PENDING"; // PENDING / IN_PROGRESS / COMPLETED
     private String priority = "LOW";
-    private int timeSpentMinutes = 0; // Time spent tracking
+    private int timeSpentMinutes = 0;
+    private String userEmail;
 
     public Task() {}
 
-    public Task(String name, String description, String deadline, int importance, String category) {
+    public Task(String name, String description, String deadline, int importance, String category, String userEmail) {
         this.name = name;
         this.description = description;
         this.deadline = deadline;
         this.importance = importance;
         this.category = category;
+        this.userEmail = userEmail;
     }
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -55,4 +55,7 @@ public class Task {
 
     public int getTimeSpentMinutes() { return timeSpentMinutes; }
     public void setTimeSpentMinutes(int timeSpentMinutes) { this.timeSpentMinutes = timeSpentMinutes; }
+
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 }

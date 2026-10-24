@@ -1,218 +1,79 @@
+﻿// ========================================
+// REGISTER (Connected to Spring Boot REST API)
 // ========================================
-// REGISTER
-// ========================================
-
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
-
-    registerForm.addEventListener("submit", function (event) {
-
+    registerForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        const name =
-            document.getElementById("name").value.trim();
-
-        const email =
-            document.getElementById("email").value.trim().toLowerCase();
-
-        const password =
-            document.getElementById("password").value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
-
-        const role =
-            document.getElementById("role").value;
-
-
-        // ====================================
-        // CHECK PASSWORD
-        // ====================================
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim().toLowerCase();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const role = document.getElementById("role").value;
 
         if (password !== confirmPassword) {
-
             alert("Passwords do not match!");
-
             return;
         }
 
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password, role })
+            });
 
-        // ====================================
-        // GET EXISTING USERS
-        // ====================================
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(errorText || "Registration failed!");
+            }
 
-        const users =
-            JSON.parse(
-                localStorage.getItem("users")
-            ) || [];
-
-
-        // ====================================
-        // CHECK DUPLICATE EMAIL
-        // ====================================
-
-        const existingUser =
-            users.find(
-                user => user.email === email
-            );
-
-
-        if (existingUser) {
-
-            alert("Email already registered!");
-
-            return;
+            alert("Account created successfully in Database!");
+            window.location.href = "login.html";
+        } catch (error) {
+            alert("Error: " + error.message);
         }
-
-
-        // ====================================
-        // CREATE NEW USER
-        // ====================================
-
-        const newUser = {
-
-            id: Date.now(),
-
-            name: name,
-
-            email: email,
-
-            password: password,
-
-            role: role
-
-        };
-
-
-        // ====================================
-        // SAVE USER
-        // ====================================
-
-        users.push(newUser);
-
-
-        localStorage.setItem(
-            "users",
-            JSON.stringify(users)
-        );
-
-
-        alert(
-            "Account created successfully!"
-        );
-
-
-        // ====================================
-        // GO TO LOGIN
-        // ====================================
-
-        window.location.href =
-            "login.html";
-
     });
-
 }
 
-
-
 // ========================================
-// LOGIN
+// LOGIN (Connected to Spring Boot REST API)
 // ========================================
-
-const loginForm =
-    document.getElementById("loginForm");
-
+const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
+        const email = document.getElementById("email").value.trim().toLowerCase();
+        const password = document.getElementById("password").value;
 
-            event.preventDefault();
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
 
-
-            const email =
-                document.getElementById(
-                    "email"
-                ).value.trim().toLowerCase();
-
-
-            const password =
-                document.getElementById(
-                    "password"
-                ).value;
-
-
-            // =================================
-            // GET USERS
-            // =================================
-
-            const users =
-                JSON.parse(
-                    localStorage.getItem("users")
-                ) || [];
-
-
-            // =================================
-            // FIND USER
-            // =================================
-
-            const user =
-                users.find(
-                    user =>
-                        user.email === email &&
-                        user.password === password
-                );
-
-
-            // =================================
-            // INVALID LOGIN
-            // =================================
-
-            if (!user) {
-
-                alert(
-                    "Invalid email or password!"
-                );
-
-                return;
+            if (!response.ok) {
+                throw new Error("Invalid email or password!");
             }
 
+            const user = await response.json();
 
-            // =================================
-            // SAVE CURRENT USER
-            // =================================
-
-            localStorage.setItem(
-                "currentUser",
-                JSON.stringify(user)
-            );
-
-
-            alert(
-                "Login successful!"
-            );
-
-
-            // =================================
-            // ROLE BASED REDIRECT
-            // =================================
+            // Save logged-in user session
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            alert("Login successful!");
 
             if (user.role === "ADMIN") {
-
-                window.location.href =
-                    "admin-dashboard.html";
-
+                window.location.href = "admin-dashboard.html";
             } else {
-
-                window.location.href =
-                    "dashboard.html";
-
+                window.location.href = "dashboard.html";
             }
-
+        } catch (error) {
+            alert("Error: " + error.message);
         }
-    );
-
+    });
 }
